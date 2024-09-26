@@ -1,0 +1,66 @@
+.navSection {
+  border: 0.2rem solid indigo;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  border: 0.2rem solid red;
+  padding: 0.5rem;
+  grid-area: 1/3/2/7;
+}
+.topContainer {
+  border: 0.2rem solid blue;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(8, 1fr);
+
+  .sidebar {
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+    border: 0.2rem solid saddlebrown;
+    grid-area: 1/1/2/3;
+    h2 {
+      margin: 0;
+      margin-bottom: 0.5rem;
+      font-size: clamp(0.8rem, 4vw, 1.5rem);
+      border: 0.2rem solid rebeccapurple;
+      display: flex;
+      justify-content: center;
+    }
+    p {
+      border: 0.2rem solid magenta;
+      padding: 0.3rem;
+      margin: 0;
+      display: flex;
+      text-align: center;
+      font-size: clamp(0.5rem, 3vw, 1rem);
+    }
+  }
+  .midbar {
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+    border: 0.2rem solid lawngreen;
+    grid-area: 1/3/2/5;
+    h2 {
+      margin: 0;
+      margin-bottom: 0.5rem;
+      border: 0.2rem solid rebeccapurple;
+      display: flex;
+      justify-content: center;
+      font-size: clamp(0.8rem, 4vw, 1.5rem);
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.3rem;
+}
