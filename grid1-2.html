@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Grid 1.2</title>
-    <link rel="stylesheet" href="grid1-2.css" defer />
+    <link rel="stylesheet" href="grid1-2.css" />
+    <script src="grid1-2.js" defer></script>
   </head>
   <body>
     <header>
@@ -25,6 +26,29 @@
       <article class="midbar">
         <h2>Content 2</h2>
       </article>
+      <aside class="sidebarRight">
+        <form class="addDog-form" action="" method="post">
+          <legend class="form-header">Add Dog</legend>
+          <label id="dogName" for="name" name="name"
+            >Name:
+            <input id="userName" type="text" .value />
+          </label>
+
+          <!-- age -->
+          <label id="dogAge" for="age" name="age"
+            >Age:
+            <input id="userName" type="text" .value />
+          </label>
+
+          <!-- race -->
+          <label id="dogRace" for="race" name="race">
+            Race: <input id="userRace" type="text" />
+          </label>
+
+          <button class="skicka">Skicka</button>
+          <div class="response"></div>
+        </form>
+      </aside>
     </section>
     <footer class="footer">Bottom</footer>
   </body>

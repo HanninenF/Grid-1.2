@@ -17,7 +17,7 @@
 .topContainer {
   border: 0.2rem solid blue;
   display: grid;
-  grid-template-rows: auto;
+  grid-template-rows: repeat(9, 1fr);
   grid-template-columns: repeat(8, 1fr);
 
   .sidebar {
@@ -56,11 +56,49 @@
       font-size: clamp(0.8rem, 4vw, 1.5rem);
     }
   }
+
+  .sidebarRight {
+    border: 0.3rem solid orangered;
+    grid-area: 1/5/9/9;
+
+    .addDog-form {
+      font-size: clamp(0.8rem, 4vw, 1.5rem);
+      margin: 0;
+      margin-bottom: 0.5rem;
+      border: 0.3rem solid gold;
+
+      .form-header {
+        display: flex;
+        justify-content: center;
+        border: 0.2rem solid rebeccapurple;
+        font-size: clamp(0.8rem, 4vw, 1.5rem);
+        padding: 0;
+        margin: 0 0 0.5rem;
+
+        font-weight: bold;
+      }
+
+      #userName {
+        display: block;
+        margin: 0.3rem;
+      }
+
+      #userAge {
+        display: Block;
+        margin: 0.3rem;
+      }
+
+      #userRace {
+        display: Block;
+        margin: 0.3rem;
+      }
+    }
+  }
 }
 
 .footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 0.3rem;
+  margin-top: 1rem;
 }
