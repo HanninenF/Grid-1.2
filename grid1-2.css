@@ -89,8 +89,23 @@
       }
 
       #userRace {
-        display: Block;
+        display: block;
         margin: 0.3rem;
+      }
+
+      #slider {
+        display: inline-block;
+        margin: 0.3rem;
+      }
+      .skicka {
+        display: block;
+        margin: 0.3rem;
+      }
+
+      .response {
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: repeat(4, 1fr);
       }
     }
   }
