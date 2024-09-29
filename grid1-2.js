@@ -28,8 +28,26 @@ function displayAllDogs() {
 
     // Lägg till den nya hundens information i responseDiv
     responseDiv.innerHTML += dogInfoHTML;
+
+    // Skapa CSS-regel för den nya hunden (kan flyttas till en separat funktion om det behövs)
+    const newColor = generateRandomColor(); // Skapa en slumpmässig bakgrundsfärg
+    styleSheet.innerHTML += `.${dogClassName} {
+            background-color: ${newColor};
+            -webkit-text-stroke: 0.5px black;
+            color: white;
+            margin-bottom: 1rem;
+            border: 0.3rem solid #ccc;
+            border-radius: 0.3rem;
+            padding: 1rem;
+            font-size: clamp(0.8rem, 4vw, 1.5rem);
+        }`;
   });
 }
+
+let gridRowStart = 1;
+let gridRowEnd = 2;
+let gridColumnStart = 1;
+let gridColumnEnd = 5;
 
 const dogs = []; // Skapar en tom array för att lagra alla hundobjekt
 
@@ -54,11 +72,6 @@ if (form) {
   slider.addEventListener("input", function () {
     output.textContent = slider.value; // Visar sliderns värde i elementet output i realtid
   });
-
-  let gridRowStart = 1;
-  let gridRowEnd = 2;
-  let gridColumnStart = 1;
-  let gridColumnEnd = 5;
 
   // Lyssnar på när formuläret skickas in
   form.addEventListener("submit", (event) => {
