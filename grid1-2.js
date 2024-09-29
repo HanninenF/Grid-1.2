@@ -10,6 +10,29 @@ function generateRandomColor() {
 
 /*  Vad gör denna funktion? Den skapar en slumpmässig hex-färg som används för att tilldela en bakgrundsfärg till varje hund (Dog)-objekt. */
 
+function displayAllDogs() {
+  // Tömmer responseDiv innan vi lägger till ny information
+  responseDiv.innerHTML = "";
+
+  // Loopar igenom alla hundar i dogs-arrayen
+  dogs.forEach((dog, index) => {
+    // Skapa ett unikt klassnamn för varje hund
+    const dogClassName = `dogDetails${index}`;
+
+    // Skapa HTML-innehållet för den aktuella hunden
+    let dogInfoHTML = `<div class="${dogClassName}">`;
+    Object.entries(dog).forEach(
+      ([key, value]) => (dogInfoHTML += `<p>${key}: ${value}</p>`)
+    );
+    dogInfoHTML += `</div>`;
+
+    // Lägg till den nya hundens information i responseDiv
+    responseDiv.innerHTML += dogInfoHTML;
+  });
+}
+
+const dogs = []; // Skapar en tom array för att lagra alla hundobjekt
+
 // Hämtar HTML-elementen från sidan
 const form = document.querySelector(".addDog-form"); // Hämtar formuläret med klassen .addDog-form
 const responseDiv = document.querySelector(".response"); // Hämtar div där hundens information kommer att visas
@@ -27,8 +50,6 @@ styleSheet: Skapar ett nytt <style>-element för att hålla dynamiska CSS-regler
 
 // Kontrollera att formuläret existerar
 if (form) {
-  const dogs = []; // Skapar en tom array för att lagra alla hundobjekt
-
   // Lyssnar på när användaren flyttar slidern och uppdaterar det visade värdet
   slider.addEventListener("input", function () {
     output.textContent = slider.value; // Visar sliderns värde i elementet output i realtid
@@ -58,6 +79,9 @@ if (form) {
     const dogIndex = dogs.length - 1; // Hämta indexet för den senaste hunden (dvs. den hund som precis lades till)
     const newClassName = `dogDetails${dogIndex}`; // Skapar ett unikt klassnamn för varje hund baserat på index
 
+    // Visa alla hundar
+    displayAllDogs(); // Anropa funktionen för att visa all hundinformation
+
     /* dogs.push(Dog): Lägger till det nya hundobjektet i arrayen dogs.
     dogIndex: Beräknar indexet för den senaste hunden i arrayen.
     newClassName: Skapar ett unikt klassnamn för varje hund som t.ex. "dogDetails0", "dogDetails1", etc. */
@@ -66,31 +90,10 @@ if (form) {
     const newColor = generateRandomColor();
     const newFontColor = generateRandomColor(); // Genererar en slumpmässig färg
 
-    styleSheet.innerHTML += `.${newClassName} 
-    
-    { grid-area:${gridRowStart}/${gridColumnStart}/${gridRowEnd}/${gridColumnEnd}; background-color: ${newColor}; -webkit-text-stroke: 0.5px black; color: white; /* Standard textfärg */
-    -webkit-text-fill-color: white; /* Specifik för WebKit-baserade webbläsare */
-    ; margin-bottom: 1rem; border: 0.3rem solid #ccc; border-radius: 0.3rem; padding: 1rem; font-size: clamp(0.8rem, 4vw, 1.5rem);
-        p{
-            margin:0;
-        }
-    }`; // Skapar en CSS-regel för den nya hunden med färg och stil
+    // Skapar en CSS-regel för den nya hunden med färg och stil
 
     /* newColor: Genererar en slumpmässig färg genom att anropa funktionen generateRandomColor().
     styleSheet.innerHTML: Lägger till en ny CSS-regel i det dynamiska styleSheet-elementet. Varje hund får sin egen unika färg och stil. */
-
-    // Skapa HTML-innehållet för den nya hunden och lägg till information om den i en div
-    let responseMessage = `<div class="${newClassName}">`; // Börjar skapa en div med det dynamiska klassnamnet
-    Object.entries(Dog).forEach(
-      ([key, value]) => (responseMessage += `<p>${key}: ${value}</p>`) // Skapar en paragraf för varje egenskap (namn, ålder, ras, styrka) i hundobjektet
-    );
-    responseMessage += `</div>`; // Stänger div-taggen
-
-    /* responseMessage: Skapar HTML-koden för att visa hundens detaljer i en div med klassen newClassName.
-    Object.entries(Dog): Itererar över alla egenskaper i objektet Dog (namn, ålder, ras och styrka) och skapar ett stycke för varje egenskap. */
-
-    // Lägg till det nya HTML-innehållet i responseDiv
-    responseDiv.innerHTML += responseMessage; // Lägger till den nya hundens information i div:en som redan finns på sidan
 
     // Logga varje hunds egenskaper i konsolen för debugging
     Object.entries(Dog).forEach(([key, value]) => {
